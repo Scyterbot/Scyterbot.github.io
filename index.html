@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Rating Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        #tableContainer {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f9f9f9;
+            overflow-x: auto;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #toggleTableBtn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        #toggleTableBtn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Chess Rating Calculator</h1>
+    <form id="ratingForm">
+        <label for="playerName">Your Name:</label>
+        <input type="text" id="playerName" name="playerName" required>
+
+        <label for="playerRating">Your Rating:</label>
+        <input type="number" id="playerRating" name="playerRating" required>
+
+        <label for="opponentName">Opponent's Name:</label>
+        <input type="text" id="opponentName" name="opponentName" required>
+
+        <label for="opponentRating">Opponent's Rating:</label>
+        <input type="number" id="opponentRating" name="opponentRating" required>
+
+        <label for="pieceColor">Your Piece Color:</label>
+        <select id="pieceColor" name="pieceColor" required>
+            <option value="">Select Color</option>
+            <option value="white">White</option>
+            <option value="black">Black</option>
+        </select>
+
+        <label for="result">Result:</label>
+        <select id="result" name="result" required>
+            <option value="">Select Result</option>
+            <option value="win">Win</option>
+            <option value="loss">Loss</option>
+            <option value="draw">Draw</option>
+        </select>
+
+        <input type="submit" value="Calculate">
+    </form>
+
+    <div class="result" id="calculationResult"></div>
+
+    <button id="toggleTableBtn" style="width: 100%;">Show Calculation History</button>
+
+    <div id="tableContainer">
+        <h2 style="text-align: center;">Calculation History</h2>
+        <table id="calculationHistory">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Player</th>
+                    <th>Opponent</th>
+                    <th>Color</th>
+                    <th>Result</th>
+                    <th>Old Rating</th>
+                    <th>Opponent's Rating</th>
+                    <th>Expected Score</th>
+                    <th>Actual Score</th>
+                    <th>New Rating</th>
+                   
